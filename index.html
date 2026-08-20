@@ -5,62 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Full Maze Chase</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: 'Courier New', monospace;
-    color: #fff;
-    overflow: hidden;
-  }
-  #gameCanvas {
-    border: 2px solid #2121DE;
-    image-rendering: pixelated;
-  }
-  #hud {
-    display: flex;
-    justify-content: space-between;
-    width: 560px;
-    padding: 8px 0;
-    font-size: 16px;
-  }
-  #hud span { color: #FFD700; }
-  #message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 28px;
-    color: #FFD700;
-    text-align: center;
-    display: none;
-    text-shadow: 0 0 10px #FFD700;
-    z-index: 10;
-  }
-  #message button {
-    margin-top: 15px;
-    padding: 8px 24px;
-    font-size: 16px;
-    font-family: 'Courier New', monospace;
-    background: #2121DE;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  #message button:hover { background: #4040FF; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; font-family: monospace; }
+canvas { display: block; }
+#ui { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 18px; text-align: center; z-index: 10; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+#message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff0; font-size: 32px; text-align: center; z-index: 20; display: none; text-shadow: 3px 3px 6px rgba(0,0,0,0.9); }
 </style>
 </head>
 <body>
-<div id="hud">
-  <span>SCORE: <span id="score">0</span></span>
-  <span>LIVES: <span id="lives">♥♥♥</span></span>
-</div>
-<canvas id="gameCanvas"></canvas>
+<div id="ui">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></div>
 <div id="message"></div>
+<canvas id="game"></canvas>
+<script src="src/maze.js"></script>
+<script src="src/pacman.js"></script>
+<script src="src/ghosts.js"></script>
+<script src="src/input.js"></script>
 <script src="src/game.js"></script>
 </body>
 </html>
