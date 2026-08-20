@@ -3,23 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full Maze Chase</title>
+<title>Maze Chase</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; font-family: monospace; }
-canvas { display: block; }
-#ui { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 18px; text-align: center; z-index: 10; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-#message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff0; font-size: 32px; text-align: center; z-index: 20; display: none; text-shadow: 3px 3px 6px rgba(0,0,0,0.9); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: monospace;
+  }
+  canvas {
+    border: 2px solid #333;
+    image-rendering: pixelated;
+  }
+  #ui {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    pointer-events: none;
+  }
+  #controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(2, 50px);
+    gap: 4px;
+  }
+  .ctrl-btn {
+    background: #222;
+    border: 1px solid #555;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .ctrl-btn:active { background: #444; }
 </style>
 </head>
 <body>
-<div id="ui">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></div>
-<div id="message"></div>
+<div id="ui">Score: <span id="score">0</span> &nbsp; Lives: <span id="lives">3</span></div>
 <canvas id="game"></canvas>
-<script src="src/maze.js"></script>
-<script src="src/pacman.js"></script>
-<script src="src/ghosts.js"></script>
-<script src="src/input.js"></script>
+<div id="controls">
+  <div></div>
+  <button class="ctrl-btn" id="up">▲</button>
+  <div></div>
+  <button class="ctrl-btn" id="left">◀</button>
+  <button class="ctrl-btn" id="down">▼</button>
+  <button class="ctrl-btn" id="right">▶</button>
+</div>
 <script src="src/game.js"></script>
 </body>
 </html>
